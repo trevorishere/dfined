@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D-fined Permanent Cosmetics | Dorothy Hong | San Francisco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f0e8;
+      --warm-white: #faf8f4;
+      --taupe: #c9bfaa;
+      --mid-taupe: #a89880;
+      --dark-taupe: #6b5e4e;
+      --espresso: #2e231a;
+      --gold: #b8965a;
+      --gold-light: #d4b07a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--warm-white);
+      color: var(--espresso);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(250, 248, 244, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184, 150, 90, 0.15);
+      transition: padding 0.3s;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--espresso);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark-taupe);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 6rem 6rem;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--espresso);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      line-height: 1.9;
+      color: var(--mid-taupe);
+      max-width: 380px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--espresso);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--taupe);
+      color: var(--dark-taupe);
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    .hero-img-container {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Decorative hero image placeholder */
+    .hero-photo-block {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #e8e0d0 0%, #d4c9b5 40%, #c4b49a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-photo-block::after {
+      content: 'Your\APhoto\AHere';
+      white-space: pre;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: rgba(107, 94, 78, 0.5);
+      letter-spacing: 0.15em;
+      text-align: center;
+      line-height: 2;
+    }
+
+    .hero-accent {
+      position: absolute;
+      bottom: 3rem;
+      left: -1.5rem;
+      width: 200px;
+      height: 260px;
+      border: 1px solid var(--gold);
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    /* ── TAGLINE BAND ── */
+    .tagline-band {
+      background: var(--espresso);
+      color: var(--cream);
+      padding: 4.5rem 6rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .tagline-band::before {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .tagline-text {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }
+
+    .tagline-text strong {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 6rem 6rem; }
+
+    .section-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--espresso);
+      margin-bottom: 3rem;
+    }
+
+    /* ── GALLERY STRIP ── */
+    .gallery {
+      padding: 0 6rem 5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .gallery-item {
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #ddd5c2, #c9bfaa);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item:nth-child(2) {
+      margin-top: 2rem;
+      background: linear-gradient(160deg, #c4b49a, #b0a08a);
+    }
+
+    .gallery-item:nth-child(3) {
+      margin-top: -2rem;
+      background: linear-gradient(160deg, #cec5b0, #bfb09c);
+    }
+
+    .gallery-item::after {
+      content: 'Photo';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: rgba(107, 94, 78, 0.45);
+      letter-spacing: 0.2em;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(46,35,26,0.4), transparent);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--cream);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5px;
+      background: var(--taupe);
+      border: 1.5px solid var(--taupe);
+    }
+
+    .service-card {
+      background: var(--cream);
+      padding: 3rem 2.8rem;
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .service-card:hover { background: var(--warm-white); }
+
+    .service-number {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(184, 150, 90, 0.2);
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      line-height: 1;
+    }
+
+    .service-name {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 0.8rem;
+    }
+
+    .service-desc {
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: var(--mid-taupe);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-price {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .service-divider {
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1rem 0;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      padding: 6rem;
+    }
+
+    .about-photo {
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, #ddd5c2, #c4b49a);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-photo::after {
+      content: 'Your Photo Here';
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: rgba(107, 94, 78, 0.4);
+      letter-spacing: 0.15em;
+    }
+
+    .about-frame {
+      position: absolute;
+      top: -1.2rem;
+      left: -1.2rem;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      border: 1px solid var(--gold);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .about-text p {
+      font-size: 0.85rem;
+      line-height: 2;
+      color: var(--mid-taupe);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--dark-taupe);
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .about-name::before {
+      content: '';
+      width: 25px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* ── BOOKING ── */
+    #booking {
+      background: var(--espresso);
+      color: var(--cream);
+      text-align: center;
+      padding: 7rem 6rem;
+    }
+
+    #booking .section-label { justify-content: center; color: var(--gold-light); }
+    #booking .section-label::before { background: var(--gold-light); }
+
+    #booking .section-title { color: var(--cream); margin-bottom: 1.2rem; }
+
+    .booking-sub {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: var(--taupe);
+      margin-bottom: 3rem;
+    }
+
+    .booking-placeholder {
+      max-width: 680px;
+      margin: 0 auto;
+      border: 1px solid rgba(184, 150, 90, 0.3);
+      padding: 4rem 3rem;
+      position: relative;
+    }
+
+    .booking-placeholder p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--taupe);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-booking {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: var(--gold);
+      color: var(--espresso);
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn-booking:hover { background: var(--gold-light); }
+
+    /* ── CONTACT ── */
+    #contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .contact-left {
+      padding: 5rem 5rem 5rem 6rem;
+      background: var(--cream);
+    }
+
+    .contact-right {
+      padding: 5rem 6rem 5rem 5rem;
+      background: var(--warm-white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-item {
+      margin-bottom: 2.2rem;
+    }
+
+    .contact-item-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-item-value {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--espresso);
+    }
+
+    .contact-item-value a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .contact-item-value a:hover { color: var(--gold); }
+
+    .contact-note {
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: var(--mid-taupe);
+      margin-bottom: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--espresso);
+      color: var(--mid-taupe);
+      padding: 2rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--taupe);
+      font-weight: 300;
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 5rem 2rem 3rem; }
+      .hero-right { height: 60vw; }
+      section { padding: 4rem 2rem; }
+      .gallery { padding: 0 2rem 3rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      #about { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
+      #booking { padding: 5rem 2rem; }
+      #contact { grid-template-columns: 1fr; }
+      .contact-left, .contact-right { padding: 3rem 2rem; }
+      .tagline-band { padding: 3rem 2rem; }
+      footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">D<span>-</span>fined <span style="font-weight:200;font-size:1rem;">Permanent Cosmetics</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#booking">Book</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0; padding-top:80px;">
+    <div class="hero-left">
+      <p class="hero-eyebrow fade-up">San Francisco, California</p>
+      <h1 class="hero-title fade-up delay-1">
+        Brows<br>
+        <em>Defined</em><br>
+        by Design.
+      </h1>
+      <p class="hero-subtitle fade-up delay-2">
+        Precision permanent cosmetics crafted to enhance your natural beauty — because the best brows look like they were always yours.
+      </p>
+      <div class="hero-cta fade-up delay-3">
+        <a href="#booking" class="btn-primary">Book a Session</a>
+        <a href="#services" class="btn-outline">View Services</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-container">
+        <div class="hero-photo-block"></div>
+      </div>
+      <div class="hero-accent"></div>
+    </div>
+  </section>
+
+  <!-- TAGLINE BAND -->
+  <div class="tagline-band">
+    <p class="tagline-text">
+      Every stroke is intentional. Every result is <strong>permanent confidence.</strong>
+    </p>
+  </div>
+
+  <!-- PHOTO GALLERY -->
+  <div class="gallery">
+    <div class="gallery-item"><div class="gallery-overlay"></div></div>
+    <div class="gallery-item"><div class="gallery-overlay"></div></div>
+    <div class="gallery-item"><div class="gallery-overlay"></div></div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="section-label">What I Offer</p>
+    <h2 class="section-title">Services &amp; Pricing</h2>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-number">01</span>
+        <h3 class="service-name">Microblading</h3>
+        <div class="service-divider"></div>
+        <p class="service-desc">
+          Hair-stroke technique using a fine blade to create individual, natural-looking brow strokes. Ideal for sparse brows or those wanting a realistic, defined shape that mimics real hair.
+        </p>
+        <p class="service-price">Starting at $100</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">02</span>
+        <h3 class="service-name">Powder / Ombré Brows</h3>
+        <div class="service-divider"></div>
+        <p class="service-desc">
+          A soft, powdered finish that fades from lighter at the front to deeper at the tail — mimicking the look of filled brows. Perfect for oily skin types or those who love a polished, makeup-like finish.
+        </p>
+        <p class="service-price">Starting at $100</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">03</span>
+        <h3 class="service-name">Nano Brows</h3>
+        <div class="service-divider"></div>
+        <p class="service-desc">
+          Using a single digital needle for ultra-fine, precise hair strokes. Nano brows offer greater detail and longevity than traditional microblading — suitable for nearly all skin types.
+        </p>
+        <p class="service-price">Starting at $100</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-number">04</span>
+        <h3 class="service-name">Lip Blushing</h3>
+        <div class="service-divider"></div>
+        <p class="service-desc">
+          A semi-permanent tint that enhances your lip color, definition, and symmetry. Wake up every morning with the perfect natural flush — no lipstick required.
+        </p>
+        <p class="service-price">Starting at $100</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-photo">
+      <div class="about-frame"></div>
+    </div>
+    <div class="about-text">
+      <p class="section-label">The Artist</p>
+      <h2 class="section-title">About Dorothy</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+      <p>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+      </p>
+      <p class="about-name">Dorothy Hong</p>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+    <p class="section-label">Reserve Your Appointment</p>
+    <h2 class="section-title" style="color:var(--cream);">Ready to Begin?</h2>
+    <p class="booking-sub">Sessions are by appointment only in San Francisco, CA.<br>All appointments include a complimentary consultation.</p>
+    <div class="booking-placeholder">
+      <p>Online booking coming soon via Cal.com</p>
+      <a href="mailto:hello@dfined.com" class="btn-booking">Email to Book</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding:0;">
+    <div class="contact-left">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-item">
+        <p class="contact-item-label">Email</p>
+        <p class="contact-item-value"><a href="mailto:hello@dfined.com">hello@dfined.com</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">Phone</p>
+        <p class="contact-item-value"><a href="tel:+14155550000">(415) 555-0000</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">Instagram</p>
+        <p class="contact-item-value"><a href="https://instagram.com/dfined" target="_blank">@dfined</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-item-label">Location</p>
+        <p class="contact-item-value">San Francisco, California</p>
+      </div>
+    </div>
+    <div class="contact-right">
+      <p class="contact-note">
+        Have a question before booking? Send a message and Dorothy will get back to you within 24–48 hours. For the fastest response, reach out via Instagram DM or email.
+      </p>
+      <a href="mailto:hello@dfined.com" class="btn-primary" style="display:inline-block; width:fit-content;">Send a Message</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">D<span>-</span>fined Permanent Cosmetics</div>
+    <p>© 2025 Dorothy Hong · San Francisco, CA</p>
+    <p>By appointment only</p>
+  </footer>
+
+</body>
+</html>
